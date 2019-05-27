@@ -18,6 +18,3 @@ EXPOSE 80 2222
 
 CMD /usr/sbin/sshd
 
-RUN chmod +x ./entrypoint.sh
-CMD /bin/bash ./entrypoint.sh
-
