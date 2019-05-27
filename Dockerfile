@@ -1,5 +1,4 @@
-FROM microsoft/aspnetcore-build:lts
-
+FROM Ubuntu 18.04
 RUN apt-get update && \
       apt-get -y install sudo
 
@@ -14,10 +13,6 @@ RUN echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && su
 COPY sshd_config /etc/ssh/
 COPY . /app
 WORKDIR /app
-
-
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
 
 EXPOSE 80 2222
 
