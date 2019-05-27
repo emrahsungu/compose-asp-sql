@@ -16,8 +16,8 @@ RUN mkdir -p /defaulthome/hostingstart \
     && echo "root:Docker!" | chpasswd \
     && echo "cd /home" >> /etc/bash.bashrc
 
-COPY init_container.sh /bin/
-RUN chmod 755 /bin/init_container.sh
+COPY init_container.sh ./
+RUN chmod 755 init_container.sh
 
 COPY sshd_config /etc/ssh/
 COPY ssh_setup.sh /tmp
@@ -31,5 +31,5 @@ EXPOSE 80 2222
 ENV SSH_PORT 2222
 
 
-RUN chmod +x /bin/init_container.sh
-CMD /bin/bash /bin/init_container.sh
+RUN chmod +x ./init_container.sh
+CMD /bin/bash ./init_container.sh
