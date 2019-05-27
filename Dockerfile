@@ -16,19 +16,16 @@ RUN mkdir -p /defaulthome/hostingstart \
     && echo "root:Docker!" | chpasswd \
     && echo "cd /home" >> /etc/bash.bashrc
 
+COPY init_container.sh /bin/
+RUN chmod 755 /bin/init_container.sh
 
 COPY sshd_config /etc/ssh/
-
 COPY ssh_setup.sh /tmp
 
 RUN mkdir -p /opt/startup \
-
    && chmod -R +x /opt/startup \
-
    && chmod -R +x /tmp/ssh_setup.sh \
-
    && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null) \
-
    && rm -rf /tmp/*
 
 COPY . /app	
