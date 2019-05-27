@@ -15,3 +15,7 @@ COPY . /app
 WORKDIR /app
 
 EXPOSE 80 2222
+
+CMD /usr/sbin/sshd
+
+
