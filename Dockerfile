@@ -11,6 +11,12 @@ RUN apt-get update \
         tcptraceroute\
     && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /defaulthome/hostingstart \
+    && mkdir -p /home/LogFiles/ \
+    && echo "root:Docker!" | chpasswd \
+    && echo "cd /home" >> /etc/bash.bashrc
+
+
 COPY sshd_config /etc/ssh/
 
 COPY ssh_setup.sh /tmp
