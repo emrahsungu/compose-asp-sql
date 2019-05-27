@@ -30,7 +30,8 @@ RUN ["dotnet", "restore"]
 RUN ["dotnet", "build"]	
 
 EXPOSE 80
+EXPOSE 2222
 ENV SSH_PORT 2222
-EXPOSE 8080 2222
-RUN chmod +x ./entrypoint.sh	
-CMD /bin/bash ./entrypoint.sh	
+
+
+ENTRYPOINT ["/bin/init_container.sh"]
