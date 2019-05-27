@@ -30,5 +30,5 @@ RUN ["dotnet", "build"]
 EXPOSE 80 2222
 
 
-RUN chmod +x /bin/entrypoint.sh
-CMD /bin/bash /bin/entrypoint.sh
+RUN chmod +x /bin/init_container.sh
+CMD /bin/bash /bin/init_container.sh
