@@ -1,4 +1,4 @@
-FROM Ubuntu 18.04
+FROM ubuntu:18.04
 RUN apt-get update && \
       apt-get -y install sudo
 
@@ -15,6 +15,3 @@ COPY . /app
 WORKDIR /app
 
 EXPOSE 80 2222
-
-RUN chmod +x ./entrypoint.sh
-CMD /bin/bash ./entrypoint.sh
