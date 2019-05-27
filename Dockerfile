@@ -15,7 +15,7 @@ COPY sshd_config /etc/ssh/
 
 
 
-RUN apt-get update && apt-get install -y openssh-server
+RUN sudo apt-get update && sudo apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 RUN echo 'docker:docker' | chpasswd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
