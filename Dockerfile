@@ -1,6 +1,5 @@
-FROM ubuntu:18.04
-RUN apt-get update && \
-      apt-get -y install sudo
+FROM microsoft/aspnetcore-build:lts
+RUN apt-get update && apt-get -y install sudo
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 RUN echo "docker ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
@@ -13,11 +12,15 @@ RUN sudo apt-get update && sudo apt-get install -y openssh-server
 RUN sudo sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 
-
 COPY . /app
 WORKDIR /app
+RUN ["dotnet", "restore"]
+RUN ["dotnet", "build"]
+EXPOSE 80/tcp
 EXPOSE 80 2222
 
 CMD /usr/sbin/sshd
 
+RUN chmod +x ./entrypoint.sh
+CMD /bin/bash ./entrypoint.sh
 
