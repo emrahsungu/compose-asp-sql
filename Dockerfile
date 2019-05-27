@@ -4,7 +4,7 @@ RUN apt-get update && \
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 RUN echo "docker ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
+RUN echo "root:Docker!" | chpasswd 
 USER docker
 CMD /bin/bash
 
