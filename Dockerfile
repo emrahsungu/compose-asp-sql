@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM microsoft/aspnetcore-build:lts
 
 RUN apt-get update && \
       apt-get -y install sudo
