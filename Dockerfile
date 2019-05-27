@@ -14,7 +14,7 @@ RUN sudo sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/
 
 
 EXPOSE 80/tcp
-EXPOSE 80 2222
+EXPOSE 2222 2222
 
 CMD /usr/sbin/sshd
 
