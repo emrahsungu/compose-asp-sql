@@ -7,28 +7,15 @@ RUN echo "docker ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 RUN echo "root:Docker!" | chpasswd 
 USER docker
 CMD /bin/bash
-
 RUN sudo sysctl -w fs.inotify.max_user_watches=524288
-
 COPY sshd_config /etc/ssh/
-
-
-
-
 RUN sudo apt-get update && sudo apt-get install -y openssh-server
-RUN sudo mkdir /var/run/sshd
-
 RUN sudo sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-
-# SSH login fix. Otherwise user is kicked off after login
-RUN sudo sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
-
 
 
 
 COPY . /app
 WORKDIR /app
-
 EXPOSE 80 2222
 
 CMD /usr/sbin/sshd
