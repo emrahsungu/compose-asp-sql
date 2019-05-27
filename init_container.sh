@@ -31,9 +31,24 @@ EOL
 cat /etc/motd
 
 
-
 # starting sshd process
-
 sed -i "s/SSH_PORT/$SSH_PORT/g" /etc/ssh/sshd_config
-
 /usr/sbin/sshd
+
+
+
+
+
+
+set -e
+run_cmd="dotnet run --server.urls http://*:80"
+
+exec $run_cmd
+
+
+
+
+
+
+
+
