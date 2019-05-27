@@ -28,6 +28,7 @@ RUN ["dotnet", "restore"]
 RUN ["dotnet", "build"]	
 
 EXPOSE 80 2222
+ENV SSH_PORT 2222
 
 
 RUN chmod +x /bin/init_container.sh
