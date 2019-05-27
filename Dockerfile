@@ -8,7 +8,7 @@ RUN echo "docker ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 USER docker
 CMD /bin/bash
 
-RUN sudo echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
+RUN sudo sysctl -w fs.inotify.max_user_watches=524288
 
 COPY sshd_config /etc/ssh/
 COPY . /app
