@@ -8,7 +8,7 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 USER docker
 CMD /bin/bash
 
-RUN echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+RUN echo fs.inotify.max_user_watches=524288 | sudo -S tee -a /etc/sysctl.conf && sudo sysctl -p
 COPY sshd_config /etc/ssh/
 COPY . /app
 WORKDIR /app
