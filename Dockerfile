@@ -12,10 +12,7 @@ RUN sudo apt-get update && sudo apt-get install -y openssh-server
 RUN sudo sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 
-COPY . /app
-WORKDIR /app
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
+
 EXPOSE 80/tcp
 EXPOSE 80 2222
 
