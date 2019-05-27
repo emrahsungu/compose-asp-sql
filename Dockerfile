@@ -1,5 +1,6 @@
 FROM microsoft/aspnetcore-build:lts
-
+COPY . /app	
+WORKDIR /app	
 RUN apt-get update \
     && apt-get install -y --no-install-recommends\
         apt-utils\
@@ -22,8 +23,7 @@ RUN chmod 755 init_container.sh
 COPY sshd_config /etc/ssh/
 COPY ssh_setup.sh /tmp
 
-COPY . /app	
-WORKDIR /app	
+
 RUN ["dotnet", "restore"]	
 RUN ["dotnet", "build"]	
 
