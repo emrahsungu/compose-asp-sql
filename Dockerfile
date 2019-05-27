@@ -1,4 +1,5 @@
 FROM microsoft/aspnetcore-build:lts
+COPY sshd_config /etc/ssh/
 COPY . /app
 WORKDIR /app
 
