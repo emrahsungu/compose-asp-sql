@@ -29,9 +29,6 @@ WORKDIR /app
 RUN ["dotnet", "restore"]	
 RUN ["dotnet", "build"]	
 
-EXPOSE 80
-EXPOSE 2222
-ENV SSH_PORT 2222
-
+EXPOSE 80 2222
 
 ENTRYPOINT ["/bin/init_container.sh"]
