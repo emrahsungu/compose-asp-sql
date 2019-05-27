@@ -22,8 +22,6 @@ RUN chmod 755 /bin/init_container.sh
 COPY sshd_config /etc/ssh/
 COPY ssh_setup.sh /tmp
 
-
-
 COPY . /app	
 WORKDIR /app	
 RUN ["dotnet", "restore"]	
@@ -31,4 +29,6 @@ RUN ["dotnet", "build"]
 
 EXPOSE 80 2222
 
-ENTRYPOINT ["/bin/init_container.sh"]
+
+RUN chmod +x /bin/entrypoint.sh
+CMD /bin/bash /bin/entrypoint.sh
